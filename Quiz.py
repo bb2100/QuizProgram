@@ -1,17 +1,24 @@
+from operator import truediv
+
+
 class Question:
-    def __init__(self, question, trueanswer, alternative : list) -> None:
+    def __init__(self, question:str, trueanswer:str, alternative : list) -> None:
         self.question = question
         self.trueanswer = trueanswer
         self.alternative = alternative
 
-    def ask_question(self, answer):
+    def ask_question(self):
         print(self.question)
-        answer = input
+        
 
     def choose_answer(self, answer):
         if answer == self.trueanswer:
-            score = score + 1
-        
+            print("You did good")
+            return True
+
+        else:
+            return False
+
     def write_alternatives(self):
         print(self.alternative)
 
@@ -23,4 +30,12 @@ class Quiz:
 
     score = 0
 
-    def ask_question(self):
+    def question_number(self):
+        pass
+
+
+lis = ["no"]
+q1 = Question("What is right?","yes",lis)
+
+q1.ask_question()
+q1.choose_answer(input())
