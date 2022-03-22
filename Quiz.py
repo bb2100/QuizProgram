@@ -1,5 +1,4 @@
-from operator import truediv
-
+from random import shuffle
 
 class Question:
     def __init__(self, question:str, trueanswer:str, alternative : list) -> None:
@@ -7,17 +6,12 @@ class Question:
         self.trueanswer = trueanswer
         self.alternative = alternative
 
-    def ask_question(self):
-        print(self.question)
-        
-
-    def choose_answer(self, answer):
-        if answer == self.trueanswer:
-            print("You did good")
-            return True
-
+    def check_answer(self, answer):
+        if answer == self.trueanswer :
+            return 1
         else:
-            return False
+            print(f"That was incorrect. The correct answer was {self.trueanswer}")
+        
 
     def write_alternatives(self):
         print(self.alternative)
@@ -28,14 +22,25 @@ class Quiz:
         self.question = question
         self.score = score
 
-    score = 0
+    def ask_question(self):
+       ask = shuffle(self.question)
+       for x in self.question:
+           print (x.question)
+           q=0
+           for y in x.alternative:
+               q+=1
+               print(f"{q}: {x}")
+            answer = input("Write the letter of the alternative:")
+            if y.check_answer(answer) == 1 #Needs controlling answer
+
+
 
     def question_number(self):
         pass
 
+q1 = Question("Hur många bekräftade testiklar har Frej Larsson","c",["a) 1st","b) 2st","c) 3st","d) Inga, bara en manpussy"])
 
-lis = ["no"]
-q1 = Question("What is right?","yes",lis)
+quiz = Quiz("bbsQuiz",[q1],0)
 
-q1.ask_question()
-q1.choose_answer(input())
+
+
