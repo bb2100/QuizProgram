@@ -33,9 +33,11 @@ class Quiz:
                q+=1
                print(f"{q}: {y}")
             answer = input("Write the letter of the alternative:")
-            if x.check_answer(answer) == 1: #Needs controlling answer
+            if x.check_answer(answer) == 1:
                 self.score += 1
-
+                print(f"This is your current score: {self.score}\n")
+            else:
+                print(f"This is your current score: {self.score}\n")
 
     def question_number(self):
         pass
