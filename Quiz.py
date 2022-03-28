@@ -77,11 +77,11 @@ def main(): #Questions and creating quiz
     start = input("Vilket quiz vill du starta? \nSkriv 1 för bbsQuiz\nSkriv 2 för FaktaQuiz\nSkriv nåt annat för att avsluta\n")
     if (start == "1"):
         quiz.ask_question()
-        print ("Dedär var sista frågan!\n")
+        print ("Det där var sista frågan!\n")
         sleep(2)
     if (start == "2"):
         quiz2.ask_question()
-        print ("Dedär var sista frågan!\n")
+        print ("Det där var sista frågan!\n")
         sleep(2)
     else:
         raise SystemExit("Programmet Avslutades")
