@@ -20,7 +20,7 @@ class Question:
         print(self.alternative)
 
 class Quiz:
-    def __init__(self, name, question : list, score, qnumber) -> None:
+    def __init__(self, name, question : list, score=0, qnumber=1) -> None:
         self.name = name
         self.question = question
         self.score = score
@@ -34,7 +34,7 @@ class Quiz:
             for y in x.alternative:
                q+=1
                print(f"{q}: {y}")
-            answer = input("Write the letter of the alternative:")
+            answer = input("Write the letter of the alternative:").lower()
             if x.check_answer(answer) == 1:
                 self.score += 1
                 self.qnumber += 1
@@ -42,6 +42,26 @@ class Quiz:
             else:
                 self.qnumber += 1
                 print(f"This is your current score: {self.score}\n") #checks wrong answer and prints score
+
+
+def get_questions(choice):
+    path = ""
+    if choice == 1: path="bbs.txt"
+    elif choice == 2: path="fakta.txt"
+
+    questions = []
+    with open(path, "r", encoding="utf-8") as f:
+        name = f.readline() #läser in första raden med quizzets namn
+        for line in f.readlines():
+            question = line.split("/")
+            #0 - fråga
+            #1 - svar
+            #2 - alternativen
+            alts = question[2].split(",")
+            questions.append(Question(question[0], question[1], alts))
+    quiz = Quiz(name, questions)
+    
+    return quiz
 
 
 
